@@ -4,6 +4,7 @@ import { EmptyList } from "../EmptyList/EmptyList"
 import { ListItem } from "../ListItem/ListItem"
 
 export interface ToDo{
+	id?: string;
 	isCompleted: boolean;
 	content: string;
 }
@@ -13,6 +14,9 @@ interface ToDoListProps{
 }
 
 export function ToDoList({toDolist}:ToDoListProps){
+
+	const toDoListTotal = toDolist.length
+	const toDoListCompletedTotal = toDolist.filter((toDo: ToDo) => toDo.isCompleted).length
 	return (
 		<>
 			<header className={styles.topBar}>
@@ -21,7 +25,7 @@ export function ToDoList({toDolist}:ToDoListProps){
 						Tarefas criadas
 					</h2>
 					<span>
-						0
+						{toDoListTotal}
 					</span>
 				</div>
 				<div className={styles.completedToDos}>
@@ -29,7 +33,11 @@ export function ToDoList({toDolist}:ToDoListProps){
 						Concluídas
 					</h2>
 					<span>
-						0
+						{
+							toDoListTotal?
+							`${toDoListCompletedTotal} de ${toDoListTotal}`:
+							`${toDoListTotal}`
+						}
 					</span>
 				</div>
 			</header>
@@ -40,7 +48,7 @@ export function ToDoList({toDolist}:ToDoListProps){
 					<>
 						{toDolist.map(toDo =>{
 							return(
-								<ListItem key={toDo.content} isCompleted={toDo.isCompleted} content={toDo.content}/>
+								<ListItem key={toDo.id} isCompleted={toDo.isCompleted} content={toDo.content}/>
 		
 							)
 						})}

@@ -3,7 +3,6 @@
 	padding: 16px;
 	align-items: flex-start;
 	gap: 12px;
-	align-self: stretch;
 	border-radius: 8px;
 	border: 1px solid var(--gray-400, #333);
 	background: var(--gray-500, #262626);
@@ -24,6 +23,8 @@
 	justify-content: center;
 	align-items: center;
 	color: var(--gray-300);
+	/* margin-right: 0;
+	margin-left: auto; */
 }
 
 .listItem button:hover{
@@ -33,6 +34,10 @@
 
 .listItem{
 	color: var(--gray-100);
+}
+
+.listItem p {
+	width: 632px;
 }
 
 .completedToDo{

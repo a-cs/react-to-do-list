@@ -1,4 +1,6 @@
-import {useState} from "react"
+import {useState, ChangeEvent, FormEvent, InvalidEvent} from "react"
+import {v4 as uuidv4} from 'uuid';
+
 import { Header } from './components/Header/Header'
 import { ToDoList, ToDo } from './components/ToDoList/ToDoList'
 
@@ -9,15 +11,37 @@ import './global.css'
 
 function App() {
 	const [toDoList, setToDoList] = useState<ToDo[]>([])
+	const [newToDoContent, setNewToDoContent] = useState("")
+
+	function handleNewToDoContentChange(event: ChangeEvent<HTMLInputElement>){
+		event.target.setCustomValidity("")
+		setNewToDoContent(event.target.value)
+	}
+	
+	function handleInvalid(event: InvalidEvent<HTMLInputElement>){
+		event.target.setCustomValidity("Esse campo é obrigatório")
+	}
+
+	function handleSubmit(event: FormEvent){
+		event.preventDefault()
+		const newToDo:ToDo = {
+			id: uuidv4(),
+			isCompleted: false,
+			content: newToDoContent
+		}
+		setToDoList(previousList => [newToDo, ...previousList])
+		setNewToDoContent("")
+	}
+
 
 	return (
 	<>
 		<Header/>
 		<div className={styles.wrapper}>
-			<div className={styles.addToDo}>
-				<input type="text" placeholder='Adicione uma nova tarefa' />
-				<button>Criar <PlusIcon /></button>
-			</div>
+			<form onSubmit={handleSubmit} className={styles.addToDo}>
+				<input required onChange={handleNewToDoContentChange} onInvalid={handleInvalid} value={newToDoContent} type="text" placeholder='Adicione uma nova tarefa' />
+				<button type="submit">Criar <PlusIcon /></button>
+			</form>
 			<ToDoList
 			toDolist={toDoList}
 			/>
