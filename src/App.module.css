@@ -1,0 +1,51 @@
+.wrapper{
+	display: flex;
+	width: 736px;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.addToDo{
+	width: 100%;
+	display: flex;
+	gap: 8px;
+	margin-top: -27px;
+}
+
+.addToDo input{
+	width: 100%;
+	padding: 1rem;
+	background: var(--gray-500);
+	border: 1px solid var(--gray-700);
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.addToDo input:not(:placeholder-shown){
+	color: var(--gray-100);
+	border: 1px solid var(--purple-dark, #5E60CE);
+}
+
+.addToDo input:focus{
+	box-shadow: 0 0 0 1px var(--purple-dark);
+}
+
+.addToDo button{
+	display: flex;
+	padding: 16px;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	border-radius: 8px;
+	background: var(--blue-dark);
+	color: var(--gray-100);
+	font-size: 0.875rem;
+	font-weight: 700;
+	transition: 0.1s;
+	cursor: pointer;
+}
+
+.addToDo button:hover{
+	background: var(--blue);
+}
