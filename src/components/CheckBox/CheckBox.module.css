@@ -1,0 +1,21 @@
+.checkBoxNotChecked{
+	height: 25px;
+	cursor: pointer;
+	color: var(--blue);
+	transition: 0.1s;
+}
+
+.checkBoxNotChecked:hover{
+	color: var(--blue-dark);
+}
+
+.checkBoxChecked{
+	height: 25px;
+	cursor: pointer;
+	color: var(--purple-dark);
+	transition: 0.1s;
+}
+
+.checkBoxChecked:hover{
+	color: var(--purple);
+}

@@ -1,0 +1,41 @@
+.listItem{
+	display: flex;
+	padding: 16px;
+	align-items: flex-start;
+	gap: 12px;
+	align-self: stretch;
+	border-radius: 8px;
+	border: 1px solid var(--gray-400, #333);
+	background: var(--gray-500, #262626);
+	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.06);
+}
+
+.listItem + .listItem{
+	margin-top: 1.25rem;
+}
+
+.listItem button{
+	background-color: transparent;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--gray-300);
+}
+
+.listItem button:hover{
+	background-color: var(--gray-400);
+	color: var(--danger);
+}
+
+.listItem{
+	color: var(--gray-100);
+}
+
+.completedToDo{
+	color: var(--gray-300);
+	text-decoration: line-through;
+}

@@ -1,8 +1,18 @@
 import styles from "./ToDoList.module.css"
 
 import { EmptyList } from "../EmptyList/EmptyList"
+import { ListItem } from "../ListItem/ListItem"
 
-export function ToDoList(){
+export interface ToDo{
+	isCompleted: boolean;
+	content: string;
+}
+
+interface ToDoListProps{
+	toDolist: ToDo[]
+}
+
+export function ToDoList({toDolist}:ToDoListProps){
 	return (
 		<>
 			<header className={styles.topBar}>
@@ -24,7 +34,19 @@ export function ToDoList(){
 				</div>
 			</header>
 			<main>
-				<EmptyList/>
+				{
+					toDolist.length === 0 ?
+					<EmptyList/>:
+					<>
+						{toDolist.map(toDo =>{
+							return(
+								<ListItem key={toDo.content} isCompleted={toDo.isCompleted} content={toDo.content}/>
+		
+							)
+						})}
+					</>
+
+				}
 			</main>
 		</>
 	)
