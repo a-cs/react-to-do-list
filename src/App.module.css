@@ -1,5 +1,6 @@
 .wrapper{
 	display: flex;
+	flex-direction: column;
 	width: 736px;
 	justify-content: center;
 	margin: 0 auto;
@@ -10,6 +11,7 @@
 	display: flex;
 	gap: 8px;
 	margin-top: -27px;
+	margin-bottom: 4rem;
 }
 
 .addToDo input{

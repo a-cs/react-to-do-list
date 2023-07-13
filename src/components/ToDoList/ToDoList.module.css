@@ -1,0 +1,31 @@
+.topBar{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.5rem;
+}
+
+.topBar h2{
+	font-size: 0.875rem;
+	font-weight: 700;
+}
+
+.topBar span{
+	border-radius: 999px;
+	background: var(--gray-400);
+	padding: 0.125rem 0.5rem;
+	margin-left: 0.5rem;
+	color: var(--gray-200);
+	font-size: 0.5rem;
+}
+.createdToDos{
+	color: var(--blue);
+	display: flex;
+	align-items: center;
+}
+
+.completedToDos{
+	color: var(--purple);
+	display: flex;
+	align-items: center;
+}
+

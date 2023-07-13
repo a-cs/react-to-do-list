@@ -1,0 +1,20 @@
+.emptyToDos{
+	display: flex;
+	padding: 64px 24px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 16px;
+	align-self: stretch;
+	border-radius: 8px;
+	border-top: 1px solid var(--grey-400, #333);
+}
+
+.emptyToDos img{
+	width: 56px;
+	height: 56px;
+}
+
+.emptyToDos p strong{
+	font-weight: 700;
+}

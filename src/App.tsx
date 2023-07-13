@@ -2,6 +2,7 @@ import { Header } from './components/Header/Header'
 import styles from "./App.module.css"
 import plusIcon from "./assets/plus.svg"
 import './global.css'
+import { ToDoList } from './components/ToDoList/ToDoList'
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
 				<input type="text" placeholder='Adicione uma nova tarefa' />
 				<button>Criar <img src={plusIcon} /></button>
 			</div>
+			<ToDoList
+			/>
 		</div>
     </>
   )
