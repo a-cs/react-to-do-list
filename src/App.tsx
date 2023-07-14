@@ -26,7 +26,7 @@ function App() {
 		event.preventDefault()
 		const newToDo:ToDo = {
 			id: uuidv4(),
-			isCompleted: true,
+			isCompleted: false,
 			content: newToDoContent
 		}
 		setToDoList(previousList => [newToDo, ...previousList])
@@ -37,18 +37,28 @@ function App() {
 		setToDoList(toDoList.filter((toDo:ToDo) => toDo.id !== id))
 	}
 
+	function toggleToDoCompletedAt(id?: string){
+		setToDoList(toDoList.map((toDo: ToDo) => toDo.id === id ? {...toDo, isCompleted: !toDo.isCompleted}: toDo))
+	}
 
 	return (
 	<>
 		<Header/>
 		<div className={styles.wrapper}>
 			<form onSubmit={handleSubmit} className={styles.addToDo}>
-				<input required onChange={handleNewToDoContentChange} onInvalid={handleInvalid} value={newToDoContent} type="text" placeholder='Adicione uma nova tarefa' />
+				<input
+				required
+				onChange={handleNewToDoContentChange}
+				onInvalid={handleInvalid} value={newToDoContent}
+				type="text"
+				placeholder='Adicione uma nova tarefa'
+				/>
 				<button type="submit">Criar <PlusIcon /></button>
 			</form>
 			<ToDoList
 			toDolist={toDoList}
 			onDeleteItem={deleteToDo}
+			onToggleItemCompletedAt={toggleToDoCompletedAt}
 			/>
 		</div>
 	</>

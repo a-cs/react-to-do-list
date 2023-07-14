@@ -6,12 +6,13 @@ interface ListItemProps{
 	isCompleted: boolean;
 	content: string;
 	onDeleteItem: () => void
+	onToggleItemCompletedAt: () => void
 }
 
-export function ListItem({isCompleted, content, onDeleteItem}:ListItemProps){
+export function ListItem({isCompleted, content, onDeleteItem, onToggleItemCompletedAt}:ListItemProps){
 	return (
 		<div className={styles.listItem}>
-			<CheckBox isChecked={isCompleted} />
+			<CheckBox isChecked={isCompleted} onToggleItemCompletedAt={onToggleItemCompletedAt}/>
 			{
 				isCompleted ?
 				<p className={styles.completedToDo}>{content}</p>:

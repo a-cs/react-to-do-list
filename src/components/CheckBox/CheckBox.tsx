@@ -5,11 +5,12 @@ import {ReactComponent as CheckedFalseIcon} from "../../assets/CheckedFalse.svg"
 
 interface CheckBoxProps{
 	isChecked: boolean;
+	onToggleItemCompletedAt: () => void;
 }
 
-export function CheckBox({isChecked}: CheckBoxProps){
+export function CheckBox({isChecked, onToggleItemCompletedAt}: CheckBoxProps){
 	return (
-		<>
+		<div onClick={onToggleItemCompletedAt}>
 			{
 				isChecked ?
 				<div className={styles.checkBoxChecked}>
@@ -20,6 +21,6 @@ export function CheckBox({isChecked}: CheckBoxProps){
 				</div>
 				
 			}
-		</>
+		</div>
 	)
 }
