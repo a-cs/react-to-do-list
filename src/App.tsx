@@ -12,7 +12,7 @@ import './global.css'
 function App() {
 	const [toDoList, setToDoList] = useState<ToDo[]>([])
 	const [newToDoContent, setNewToDoContent] = useState("")
-
+	
 	function handleNewToDoContentChange(event: ChangeEvent<HTMLInputElement>){
 		event.target.setCustomValidity("")
 		setNewToDoContent(event.target.value)
@@ -21,16 +21,20 @@ function App() {
 	function handleInvalid(event: InvalidEvent<HTMLInputElement>){
 		event.target.setCustomValidity("Esse campo é obrigatório")
 	}
-
+	
 	function handleSubmit(event: FormEvent){
 		event.preventDefault()
 		const newToDo:ToDo = {
 			id: uuidv4(),
-			isCompleted: false,
+			isCompleted: true,
 			content: newToDoContent
 		}
 		setToDoList(previousList => [newToDo, ...previousList])
 		setNewToDoContent("")
+	}
+	
+	function deleteToDo(id?: string){
+		setToDoList(toDoList.filter((toDo:ToDo) => toDo.id !== id))
 	}
 
 
@@ -44,6 +48,7 @@ function App() {
 			</form>
 			<ToDoList
 			toDolist={toDoList}
+			onDeleteItem={deleteToDo}
 			/>
 		</div>
 	</>

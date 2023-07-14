@@ -10,10 +10,11 @@ export interface ToDo{
 }
 
 interface ToDoListProps{
-	toDolist: ToDo[]
+	toDolist: ToDo[];
+	onDeleteItem: (id?:string) => void;
 }
 
-export function ToDoList({toDolist}:ToDoListProps){
+export function ToDoList({toDolist, onDeleteItem}:ToDoListProps){
 
 	const toDoListTotal = toDolist.length
 	const toDoListCompletedTotal = toDolist.filter((toDo: ToDo) => toDo.isCompleted).length
@@ -48,7 +49,7 @@ export function ToDoList({toDolist}:ToDoListProps){
 					<>
 						{toDolist.map(toDo =>{
 							return(
-								<ListItem key={toDo.id} isCompleted={toDo.isCompleted} content={toDo.content}/>
+								<ListItem key={toDo.id} isCompleted={toDo.isCompleted} content={toDo.content} onDeleteItem={() => onDeleteItem(toDo.id)}/>
 		
 							)
 						})}

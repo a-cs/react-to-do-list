@@ -5,9 +5,10 @@ import { CheckBox } from "../CheckBox/CheckBox"
 interface ListItemProps{
 	isCompleted: boolean;
 	content: string;
+	onDeleteItem: () => void
 }
 
-export function ListItem({isCompleted, content}:ListItemProps){
+export function ListItem({isCompleted, content, onDeleteItem}:ListItemProps){
 	return (
 		<div className={styles.listItem}>
 			<CheckBox isChecked={isCompleted} />
@@ -16,7 +17,7 @@ export function ListItem({isCompleted, content}:ListItemProps){
 				<p className={styles.completedToDo}>{content}</p>:
 				<p>{content}</p>
 			}
-			<button>
+			<button onClick={onDeleteItem}>
 				<TrashIcon />
 			</button>
 		</div>
